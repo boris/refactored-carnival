@@ -1,5 +1,5 @@
 # AWS
-AWS resources for local development, using [localstack](https://localstack.cloud/)
+AWS resources for local development, using [localstack](https://localstack.cloud/) which means _cloud_ is ephemeral
 
 ## Requirements:
 - docker
