@@ -15,5 +15,5 @@ make
 ## Pending:
 - [x] Makefile
 - [ ] More services:
-  - [ ] Lambda
+  - [x] Lambda
   - [ ] API Gateway
