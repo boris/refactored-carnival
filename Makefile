@@ -2,7 +2,7 @@
 .DEFAULT_GOAL := help
 
 run: ## Run docker-compose with all the modules enabled
-	docker-compoe up -d
+	docker-compose up -d
 
 stop: ## Stop all the services started by docker compose (make run)
 	docker-compose stop
