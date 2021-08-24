@@ -1,4 +1,5 @@
 .PHONY: run terraform
+.DEFAULT_GOAL := help
 
 run: ## Run docker-compose with all the modules enabled
 	docker-compoe up -d
