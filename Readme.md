@@ -7,12 +7,13 @@ AWS resources for local development, using [localstack](https://localstack.cloud
 - terraform ~> 1.0.0
 
 ## Usage:
+Check the help by running
 ```
-docker-compose up
+make
 ```
-
-After that, enter to each AWS resource directory and run terraform
 
 ## Pending:
-- Makefile
-- More services, like Lambda and API Gateway
+- [x] Makefile
+- [ ] More services:
+  - [ ] Lambda
+  - [ ] API Gateway
