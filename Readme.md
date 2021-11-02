@@ -17,3 +17,4 @@ make
 - [ ] More services:
   - [x] Lambda
   - [ ] API Gateway
+  - [x] SQS
