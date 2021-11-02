@@ -1,4 +1,4 @@
-.PHONY: run terraform
+.PHONY: run plan
 .DEFAULT_GOAL := help
 
 run: ## Run docker-compose with all the modules enabled
@@ -7,9 +7,14 @@ run: ## Run docker-compose with all the modules enabled
 stop: ## Stop all the services started by docker compose (make run)
 	docker-compose stop
 
-terraform: ## Run terraform for the service defined on `SRV`
+plan: ## plan terraform for the service defined on `SRV`
 ifdef SRV
 	cd $(SRV) ; terraform plan
+endif
+
+apply: ## Apply terraform for the service defined on `SRV`
+ifdef SRV
+	cd $(SRV) ; terraform apply
 endif
 
 help:
