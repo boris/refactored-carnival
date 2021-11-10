@@ -1,18 +1,18 @@
 .PHONY: run plan
 .DEFAULT_GOAL := help
 
-run: ## Run docker-compose with all the modules enabled
-	docker-compose up -d
+run: ## Run docker-compose with all the modules enabled. To run only some of them, use SERVICES=lambda,dynamodb make run
+	SERVICES=$(SERVICES) docker-compose up -d
 
 stop: ## Stop all the services started by docker compose (make run)
 	docker-compose stop
 
-plan: ## plan terraform for the service defined on `SRV`
+plan: ## plan terraform for the service defined on `SRV`. Example: SRV=dynamodb make plan
 ifdef SRV
 	cd $(SRV) ; terraform plan
 endif
 
-apply: ## Apply terraform for the service defined on `SRV`
+apply: ## Apply terraform for the service defined on `SRV`. Example: SRV=dynamodb make apply
 ifdef SRV
 	cd $(SRV) ; terraform apply
 endif
