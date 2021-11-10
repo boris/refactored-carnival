@@ -23,7 +23,7 @@ resource "aws_lambda_function" "test" {
   filename      = "functions/hello_world_py.zip"
   function_name = "hello_world_py"
   role          = aws_iam_role.iam_for_lambda.arn
-  handler       = "app.py"
+  handler       = "hello_world.lambda_handler"
 
   source_code_hash = filebase64sha256("functions/hello_world_py.zip")
 
