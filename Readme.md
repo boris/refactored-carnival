@@ -14,7 +14,8 @@ make
 
 ## Pending:
 - [x] Makefile
-- [ ] More services:
+- [x] More services:
   - [x] Lambda
-  - [ ] API Gateway
+  - [x] API Gateway
   - [x] SQS
+  - [x] DynamoDB
