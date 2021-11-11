@@ -9,7 +9,8 @@ provider "aws" {
   skip_requesting_account_id  = true
 
   endpoints {
-    lambda = "http://localhost:4566"
-    iam    = "http://localhost:4566"
+    lambda     = "http://localhost:4566"
+    iam        = "http://localhost:4566"
+    apigateway = "http://localhost:4566"
   }
 }

@@ -23,7 +23,7 @@ resource "aws_lambda_function" "test" {
   filename      = "functions/hello_world_py.zip"
   function_name = "hello_world_py"
   role          = aws_iam_role.iam_for_lambda.arn
-  handler       = "app.py"
+  handler       = "hello_world.lambda_handler"
 
   source_code_hash = filebase64sha256("functions/hello_world_py.zip")
 
@@ -34,4 +34,14 @@ resource "aws_lambda_function" "test" {
       Name = "Test"
     }
   }
+}
+
+# Permission needed by API GW.
+resource "aws_lambda_permission" "apigw" {
+  statement_id  = "AllowAPIGatewayInvoke"
+  action        = "lambda:InvokeFunction"
+  function_name = aws_lambda_function.test.function_name
+  principal     = "apigateway.amazonaws.com"
+
+  source_arn = "${aws_api_gateway_rest_api.test.execution_arn}/*/*"
 }
