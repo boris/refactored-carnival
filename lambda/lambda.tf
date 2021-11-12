@@ -36,6 +36,23 @@ resource "aws_lambda_function" "test" {
   }
 }
 
+resource "aws_lambda_function" "hello_v2" {
+  filename      = "functions/hello_world_py_v2.zip"
+  function_name = "hello_world_py_v2"
+  role          = aws_iam_role.iam_for_lambda.arn
+  handler       = "hello_world_v2.lambda_handler"
+
+  source_code_hash = filebase64sha256("functions/hello_world_py_v2.zip")
+
+  runtime = "python3.8"
+
+  environment {
+    variables = {
+      Name = "Demo v2"
+    }
+  }
+}
+
 # Permission needed by API GW.
 resource "aws_lambda_permission" "apigw" {
   statement_id  = "AllowAPIGatewayInvoke"
@@ -44,4 +61,13 @@ resource "aws_lambda_permission" "apigw" {
   principal     = "apigateway.amazonaws.com"
 
   source_arn = "${aws_api_gateway_rest_api.test.execution_arn}/*/*"
+}
+
+resource "aws_lambda_permission" "demo_apigw" {
+  statement_id  = "AllowAPIGatewayInvoke"
+  action        = "lambda:InvokeFunction"
+  function_name = aws_lambda_function.hello_v2.function_name
+  principal     = "apigateway.amazonaws.com"
+
+  source_arn = "${aws_api_gateway_rest_api.demo_v2.execution_arn}/*/*"
 }
