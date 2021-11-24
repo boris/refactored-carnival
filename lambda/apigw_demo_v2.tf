@@ -11,7 +11,7 @@ resource "aws_api_gateway_resource" "demo_proxy" {
 resource "aws_api_gateway_method" "demo_proxy_method" {
   rest_api_id   = aws_api_gateway_rest_api.demo_v2.id
   resource_id   = aws_api_gateway_resource.demo_proxy.id
-  http_method   = "ANY"
+  http_method   = "GET"
   authorization = "NONE"
 }
 
@@ -28,14 +28,14 @@ resource "aws_api_gateway_integration" "demo_lambda" {
 resource "aws_api_gateway_method" "demo_proxy_root" {
   rest_api_id   = aws_api_gateway_rest_api.demo_v2.id
   resource_id   = aws_api_gateway_rest_api.demo_v2.root_resource_id
-  http_method   = "ANY"
+  http_method   = "GET"
   authorization = "NONE"
 }
 
 resource "aws_api_gateway_integration" "demo_lambda_root" {
   rest_api_id = aws_api_gateway_rest_api.demo_v2.id
-  resource_id = aws_api_gateway_method.demo_proxy_method.resource_id
-  http_method = aws_api_gateway_method.demo_proxy_method.http_method
+  resource_id = aws_api_gateway_method.demo_proxy_root.resource_id
+  http_method = aws_api_gateway_method.demo_proxy_root.http_method
 
   integration_http_method = "POST"
   type                    = "AWS_PROXY"
