@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  nginx:
+    image: boris/nginx-swarm-demo
+    ports:
+      - 80:80
+    depends_on:
+      - node
+
+  node:
+    build: node
+    image: boris/node-swarm-demo
