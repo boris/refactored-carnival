@@ -1,0 +1,6 @@
+local:
+  hosts:
+    geekom01:
+      ansible_host: 192.168.1.30
+    gmk-01:
+      ansible_host: 192.168.1.31

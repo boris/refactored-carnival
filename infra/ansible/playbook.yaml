@@ -1,0 +1,32 @@
+- name: First playbook
+  hosts: local
+  tasks:
+    - name: Ping local hosts
+      ansible.builtin.ping:
+
+    - name: Print message
+      ansible.builtin.debug:
+        msg: Hello Ansible
+
+- name: Update and upgrade apt packages
+  hosts: local
+  become: yes
+  tasks:
+    - name: Update apt cache
+      ansible.builtin.apt:
+        update_cache: yes
+        upgrade: yes
+
+- name: Install packages
+  hosts: local
+  become: yes
+  tasks:
+    - name: Install git and curl
+      ansible.builtin.apt:
+        name:
+          - git
+          - curl
+          - python3-pip
+          - python3-venv
+        state: present
+
