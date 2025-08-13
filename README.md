@@ -1,4 +1,5 @@
 # Toolbox
+![GitHub repo size](https://img.shields.io/github/repo-size/boris/refactored-carnival)
 
 A collection of scripts, configs, and utilities for infrastructure, blockchain tooling, and general development.
 
